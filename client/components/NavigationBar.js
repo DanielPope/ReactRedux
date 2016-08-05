@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default  () => {
      return (
-       <nav classname="navbar navbar-default">
+       <nav className="navbar navbar-default">
          <div className="container-fluid">
            <div className="navbar-header">
              <Link to="/" className="navbar-brand"> Red Dice</Link>
