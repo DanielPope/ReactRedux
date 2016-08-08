@@ -1,12 +1,13 @@
 import React from 'react';
 
 class Greetings extends React.Component {
-  render () {
+  render() {
     return (
       <div className="jumbotron">
-         <h1>hello</h1>
+        <h1>Hi!</h1>
       </div>
     );
   }
 }
-export default  Greetings;
+
+export default Greetings;
