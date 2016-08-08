@@ -26,6 +26,10 @@ export default {
     ]
   },
   resolve: {
+    alias: {
+      departments: '../../data/departments.js',
+      actions: '../../actions/signupActions.js'
+    },
     extentions: [ '', '.js']
   }
 }

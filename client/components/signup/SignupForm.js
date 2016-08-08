@@ -1,6 +1,6 @@
 import React from 'react';
-import timezones from '../../data/timezones';
-import map from 'lodash/map'
+import departments from 'departments';
+import map from 'lodash/map';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -9,8 +9,7 @@ class SignupForm extends React.Component {
       username : '',
       email:'',
       password:'',
-      passwordConfirmation:'',
-      timezone:''
+      department:''
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -22,17 +21,17 @@ class SignupForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.props.userSignupRequest(this.state);
   }
 
   render () {
-    const options = map(timezones,(val, key) =>
-    <option key={val} value={val}>{key}</option>
+    const options = map(departments, (val, key) =>
+    <option key={val} value={val}>{val}</option>
     );
     return (
       <div className="rows">
         <form onSubmit={this.onSubmit}>
-          <h1>Join Our Community</h1>
+          <h1 className="text-center">Join the Intranet</h1>
 
             <div className="form-group">
               <label className="control-label">Username</label>
@@ -68,25 +67,14 @@ class SignupForm extends React.Component {
             </div>
 
             <div className="form-group">
-              <label className="control-label">Password Confirmation</label>
-              <input
-                value={this.state.passwordConfirmation}
-                onChange={this.onChange}
-                type="text"
-                name="passwordConfirmation"
-                className="form-control"
-              />
-            </div>
-
-            <div className="form-group">
-              <label className="control-label">Time Zone</label>
+              <label className="control-label">Department</label>
               <select
-                name="timezone"
+                name="department"
                 className="form-control"
-                value={this.state.timezone}
+                value={this.state.department}
                 onChange={this.onChange}
                 >
-                <option value="" disabled> Choose Your timezone</option>
+                <option value="" disabled> Choose Your Department</option>
                 {options}
               </select>
             </div>
@@ -100,5 +88,9 @@ class SignupForm extends React.Component {
       </div>
     );
   }
+}
+
+SignupForm.propTypes = {
+  userSignupRequest: React.PropTypes.func.isRequired
 }
 export default SignupForm;
